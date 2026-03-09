@@ -20,4 +20,3 @@ class Mazo:
 
     def cartas_restantes(self):
         return len(self._cartas) # se retorna la cantidad de cartas restantes dentro del mazo
-                
