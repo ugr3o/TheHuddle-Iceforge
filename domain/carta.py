@@ -8,11 +8,11 @@ class Carta:
     def obtener_puntos(self):
         if self.valor in ["J","Q","K"]: # estos valores son 10
             return 10
-        elif self.valor == "A": #
+        elif self.valor == "A": # A tiene valor 11
             return 11
         else:
-            return int(self.valor)
+            return int(self.valor) # valores pasan de str a int
 
     
-    def __str__(self):
-        return f"{self.valor}{self.palo}"
+    def __str__(self): # __str__ define como se ve el objeto cuando se imprime
+        return f"{self.valor}{self.palo}"  # se retorna limpio y legible
