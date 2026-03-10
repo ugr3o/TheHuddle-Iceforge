@@ -1,5 +1,3 @@
-from domain.carta import Carta
-from domain.mazo import Mazo
 from abc import ABC, abstractmethod
 
 class Participante(ABC): # abc abstract base casses
@@ -34,4 +32,3 @@ class Participante(ABC): # abc abstract base casses
 
     def __str__(self):
         return f"{self._nombre}{self.calcular_puntos()}"
-
