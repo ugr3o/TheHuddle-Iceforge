@@ -4,7 +4,7 @@ class Jugador(Participante):
 
     def __init__(self,nombre,saldo):
         super().__init__(nombre)
-        self.__saldo = saldo # doble __ para que sea mas dificil de acceder o modificar
+        self.__saldo = saldo # doble __ para que sea mas dificil de acceder o modificar privado
         self.__apuesta = 0
     
     def realizar_apuesta(self,monto):
@@ -37,4 +37,3 @@ class Jugador(Participante):
 
     def __str__(self):
         return f"{self._nombre}{self.__saldo}{self.calcular_puntos()}"
-    
