@@ -1,5 +1,5 @@
 from domain.participante import Participante
-
+from ui.consola import Consola
 class Jugador(Participante):
 
     def __init__(self,nombre,saldo):
@@ -26,14 +26,19 @@ class Jugador(Participante):
     def obtener_saldo(self):
         return self.__saldo
     
-    def jugar_turno(self):
-        opcion = int(input("1- Pedir carta \n 2- Plantarse: "))
-        if opcion == 1:
-            return "pedir"
-        elif opcion == 2:
-            return "plantarse"
-        else:
-            print("Opción inválida")
+    def jugar_turno(self, mazo):
+        while True:
+            Consola.mostrar_mano(self)
+            opcion = Consola.pedir_accion()
+            if opcion == 1:
+                self.agregar_carta(mazo.repartir())
+                if self.calcular_puntos() > 21:
+                    Consola.mostrar_resultado(f"{self._nombre} se pasó de 21!")
+                    return "pasado"
+            elif opcion == 2:
+                return "plantarse"
+            else:
+                Consola.mostrar_resultado("Opción inválida")
 
     def __str__(self):
         return f"{self._nombre}{self.__saldo}{self.calcular_puntos()}"
