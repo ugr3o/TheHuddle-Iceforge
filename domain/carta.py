@@ -1,18 +1,21 @@
 class Carta:
-    PALOS = ["♠️", "♥️", "♦️", "♣️"] #palos posibles para cada valor
-    VALORES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] # valores de las cartas como str
-    def __init__(self,palo,valor): # se utiliza el __init__ por convencion y el self para indicar que le pertenece
+    # listas de clase con todos los palos y valores posibles de una baraja estándar
+    PALOS = ["♠️", "♥️", "♦️", "♣️"]
+    VALORES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+    def __init__(self, palo, valor):
         self.palo = palo
         self.valor = valor
 
     def obtener_puntos(self):
-        if self.valor in ["J","Q","K"]: # estos valores son 10
+        # figuras valen 10, el As vale 11 (puede ajustarse en calcular_puntos), el resto su valor numérico
+        if self.valor in ["J", "Q", "K"]:
             return 10
-        elif self.valor == "A": # A tiene valor 11
+        elif self.valor == "A":
             return 11
         else:
-            return int(self.valor) # valores pasan de str a int
+            return int(self.valor)
 
-    
-    def __str__(self): # __str__ define como se ve el objeto cuando se imprime
-        return f"{self.valor}{self.palo}"  # se retorna limpio y legible
+    def __str__(self):
+        # representación legible: valor + palo, ej: "A♠️"
+        return f"{self.valor}{self.palo}"
