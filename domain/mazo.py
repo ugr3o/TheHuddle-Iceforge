@@ -1,7 +1,7 @@
 from domain.carta import Carta
 import random
 
-class Mazo:
+class Mazo():
 
     def __init__(self):
         self._cartas = []  # lista privada que contiene los 52 objetos Carta

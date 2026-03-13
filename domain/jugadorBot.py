@@ -22,10 +22,10 @@ class Jugadorbot(Participante):
         # en empate se devuelve la apuesta sin ganancia
         self.__saldo += self.__apuesta
 
-    def obtener_apuesta(self):
+    def obtener_apuesta(self): #getter
         return self.__apuesta
 
-    def obtener_saldo(self):
+    def obtener_saldo(self): #getter
         return self.__saldo
 
     def jugar_turno(self, mazo):

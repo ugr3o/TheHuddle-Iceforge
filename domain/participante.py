@@ -28,8 +28,11 @@ class Participante(ABC):
         # se vacía la mano al inicio de cada nueva ronda
         self._mano.clear()
 
-    def obtener_nombre(self):
+    def obtener_nombre(self): # getter
         return self._nombre
+    
+    def obtener_mano(self):
+        return list(self._mano)  # devuelve copia, nadie puede modificar la original
 
     @abstractmethod
     def jugar_turno(self):

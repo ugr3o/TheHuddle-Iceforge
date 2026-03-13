@@ -23,17 +23,21 @@ class Jugador(Participante):
         # en empate se devuelve la apuesta sin ganancia
         self.__saldo += self.__apuesta
 
-    def obtener_apuesta(self):
+    def obtener_apuesta(self): # getter
         return self.__apuesta
 
-    def obtener_saldo(self):
+    def obtener_saldo(self): # getter
         return self.__saldo
 
     def jugar_turno(self, mazo):
         # el jugador elige acción en cada iteración hasta plantarse o pasarse
+        
         while True:
             Consola.mostrar_mano(self)
             opcion = Consola.pedir_accion()
+            if self.calcular_puntos() == 21:
+                print("¡21! Plantado automáticamente.")
+                return "plantarse"
             if opcion == 1:
                 self.agregar_carta(mazo.repartir())
                 if self.calcular_puntos() > 21:

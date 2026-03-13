@@ -45,7 +45,7 @@ class Game():
         self.jugador.realizar_apuesta(monto)
 
         # el bot apuesta una cantidad fija automáticamente
-        self.jugadorbot.realizar_apuesta(100)
+        self.jugadorbot.realizar_apuesta(400)
 
         # se reparten 2 cartas a cada participante
         for _ in range(2):

@@ -9,4 +9,3 @@ class Dealer(Participante):
         
     def __str__(self):
         return f"{self._nombre}{self.calcular_puntos()}"
-            
