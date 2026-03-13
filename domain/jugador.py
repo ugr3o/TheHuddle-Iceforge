@@ -18,6 +18,7 @@ class Jugador(Participante):
             if opcion == 1:
                 self.agregar_carta(mazo.repartir())
                 if self.calcular_puntos() > 21:
+                    Consola.mostrar_mano(self)  # muestra la mano con la carta que lo pasó
                     return "pasado"
             elif opcion == 2:
                 return "plantarse"

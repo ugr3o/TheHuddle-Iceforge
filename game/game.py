@@ -23,10 +23,10 @@ class Game():
         continuar = True
         while continuar:
             self._jugar_ronda()
-            
+
             # si se quedó sin saldo no puede seguir jugando
             if self.jugador.obtener_saldo() == 0:
-                print(f"\n{self.jugador.obtener_nombre()} se quedó sin saldo. Fin del juego.")
+                Consola.mostrar_sin_saldo(self.jugador.obtener_nombre())
                 continuar = False
             else:
                 opcion = Consola.pedir_continuar()
@@ -62,7 +62,7 @@ class Game():
         # al inicio solo se muestra la carta visible del dealer (regla del blackjack)
         Consola.mostrar_carta_visible_dealer(self.dealer)
 
-        # mostrar mano de jugadorBot
+        # mostrar mano inicial del jugadorBot
         Consola.mostrar_mano(self.jugadorbot)
 
         # turno del jugador humano
@@ -76,14 +76,18 @@ class Game():
             self.dealer.jugar_turno(self.mazo)
 
         # se revela la mano completa del dealer al final de la ronda
-        print("\n--- Resultado de la ronda ---")
+        Consola.mostrar_separador()
         Consola.mostrar_mano(self.dealer)
+
+        # si el jugador se pasó el dealer no jugó, se aclara
+        if resultado_jugador == "pasado":
+            Consola.mostrar_resultado("El dealer no jugó (jugador se pasó)")
 
         # se determina el ganador de la ronda
         self._determinar_ganador(resultado_jugador)
 
         # se muestra el saldo actualizado del jugador humano
-        print(f"Saldo actual de {self.jugador.obtener_nombre()}: {self.jugador.obtener_saldo()}")
+        Consola.mostrar_saldo(self.jugador.obtener_nombre(), self.jugador.obtener_saldo())
 
     def _determinar_ganador(self, resultado_jugador):
         # si el jugador se pasó de 21 pierde automáticamente
@@ -96,6 +100,7 @@ class Game():
         # el bot siempre se evalúa, independientemente del resultado del jugador humano
         Consola.mostrar_mano(self.jugadorbot)
         self._evaluar_resultado(self.jugadorbot)
+        Consola.mostrar_saldo(self.jugadorbot.obtener_nombre(), self.jugadorbot.obtener_saldo())
 
     def _evaluar_resultado(self, jugador):
         puntos_jugador = jugador.calcular_puntos()

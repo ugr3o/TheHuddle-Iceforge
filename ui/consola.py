@@ -64,10 +64,27 @@ class Consola:
 
     @staticmethod
     def mostrar_mano(participante):
+        # muestra todas las cartas y el total de puntos del participante
         cartas = " | ".join(str(carta) for carta in participante.obtener_mano())
         print(f"{participante.obtener_nombre()} - {cartas} | Puntos: {participante.calcular_puntos()}")
 
     @staticmethod
     def mostrar_carta_visible_dealer(dealer):
+        # al inicio solo se muestra la primera carta del dealer, la segunda queda oculta
         carta_visible = str(dealer.obtener_mano()[0])
         print(f"{dealer.obtener_nombre()} - {carta_visible} | ?? (una carta oculta)")
+
+    @staticmethod
+    def mostrar_saldo(nombre, saldo):
+        # muestra el saldo actualizado de cualquier participante
+        print(f"Saldo actual de {nombre}: {saldo}")
+
+    @staticmethod
+    def mostrar_separador():
+        # separador visual entre el desarrollo de la ronda y los resultados
+        print("\n--- Resultado de la ronda ---")
+
+    @staticmethod
+    def mostrar_sin_saldo(nombre):
+        # se muestra cuando el jugador se queda sin saldo y no puede continuar
+        print(f"\n{nombre} se quedó sin saldo. Fin del juego.")
