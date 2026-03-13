@@ -65,9 +65,9 @@ class Consola:
     @staticmethod
     def mostrar_mano(participante):
         cartas = " | ".join(str(carta) for carta in participante.obtener_mano())
-        print(f"{participante.obtener_nombre()} → {cartas} | Puntos: {participante.calcular_puntos()}")
+        print(f"{participante.obtener_nombre()} - {cartas} | Puntos: {participante.calcular_puntos()}")
 
     @staticmethod
     def mostrar_carta_visible_dealer(dealer):
-        carta_visible = str(dealer.obtener_mano()[0])  # ✅ usa el getter
+        carta_visible = str(dealer.obtener_mano()[0])
         print(f"{dealer.obtener_nombre()} - {carta_visible} | ?? (una carta oculta)")
