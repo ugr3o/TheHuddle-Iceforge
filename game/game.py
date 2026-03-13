@@ -23,9 +23,15 @@ class Game():
         continuar = True
         while continuar:
             self._jugar_ronda()
-            opcion = Consola.pedir_continuar()
-            if opcion == 2:
+            
+            # si se quedó sin saldo no puede seguir jugando
+            if self.jugador.obtener_saldo() == 0:
+                print(f"\n{self.jugador.obtener_nombre()} se quedó sin saldo. Fin del juego.")
                 continuar = False
+            else:
+                opcion = Consola.pedir_continuar()
+                if opcion == 2:
+                    continuar = False
 
         Consola.mostrar_fin()
 
@@ -55,6 +61,9 @@ class Game():
 
         # al inicio solo se muestra la carta visible del dealer (regla del blackjack)
         Consola.mostrar_carta_visible_dealer(self.dealer)
+
+        # mostrar mano de jugadorBot
+        Consola.mostrar_mano(self.jugadorbot)
 
         # turno del jugador humano
         resultado_jugador = self.jugador.jugar_turno(self.mazo)
